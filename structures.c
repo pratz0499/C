@@ -3,21 +3,52 @@ struct fraction
 {
     int num,den;
 };
-void input()
+struct fractions
 {
-    struct fraction f;
-    printf("Enter the numerator:");
-    scanf("%d",&f.num);
-    printf("Enter the denominator:");
-    scanf("%d",&f.den);
-}
-void display()
+    int n;
+    struct fraction fractions[10];
+};
+struct answer
 {
-    struct fraction f;
-    printf("num=%d dem=%d",f.num,f.den);
+    int num,den;
+};
+struct answers
+{
+    struct answer answers[10];
+};
+struct fractions input()
+{
+    struct fractions fs;
+    printf("Enter the number of fractions:");
+    scanf("%d",&fs.n);
+    for(int i=0;i<fs.n;i++)
+    {
+        printf("Enter the numerator:");
+        scanf("%d",&fs.fractions[i].num);
+        printf("Enter the denominator:");
+        scanf("%d",&fs.fractions[i].den);
+    }
+    return fs;
+
 }
+/*void add()
+{
+    struct fractions fs;
+
+
+}*/
+void display(struct fractions fs)
+{
+    for(int i=0;i<fs.n;i++)
+    {
+        printf("num[%d]=%d den[%d]=%d ",i+1,fs.fractions[i].num,i+1,fs.fractions[i].den);
+    }
+}
+
+
 void main()
 {
-    input();
-    display();
+    struct fractions fs;
+    fs=input();
+    display(fs);
 }
