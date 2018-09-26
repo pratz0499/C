@@ -8,14 +8,9 @@ struct fractions
     int n;
     struct fraction fractions[10];
 };
-struct answer
-{
-    int num,den;
-};
-struct answers
-{
-    struct answer answers[10];
-};
+
+
+
 struct fractions input()
 {
     struct fractions fs;
@@ -46,9 +41,29 @@ void display(struct fractions fs)
 }
 
 
-void main()
+int compute(struct fractions fs)
+{
+    int sum_num, mul_den;
+
+    for(int i=0;i<fs.n;i++)
+    {
+        sum_num= (fs.fractions[i].num*fs.fractions[i+1].den)+(fs.fractions[i+1].num*fs.fractions[i].den);
+        mul_den=(fs.fractions[i].den)*(fs.fractions[i+1].den);
+
+
+
+
+    }
+     printf("%d\n %d",sum_num,mul_den);
+
+
+}
+
+
+int main()
 {
     struct fractions fs;
     fs=input();
+    fs=compute(fs);
     display(fs);
 }
