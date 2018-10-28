@@ -1,56 +1,69 @@
-#include<stdio.h>
+ #include <stdio.h>
 struct stack
 {
     int top;
     int size;
     void *data[100];
 };
-
-void push(struct stack *p, void *item)
+int push(struct stack *s, void *item)
 {
-    if(p->top==p->size-1)
+    if(s->top==s->size-1)
     {
-       printf("the stack is full");
+        return 0;
     }
     else
     {
-        p->top++;
-        p->data[p->top]=item;
-    }
+        s->top++;
+        s->data[s->top]=item;
 
+        return 1;
+    }
 }
-void pop(struct stack *p)
+void *pop(struct stack *s, int *error)
 {
-    if(p->top=-1)
+    void *temp;
+    if(s->top==-1)
     {
-        printf("the stack is empty");
+        *error = 1;
     }
     else
     {
-        p->top=p->top-1;
-        return void *p->data[top];
+        s->data[s->top]=temp;
+        s->top--;
+        return temp;
     }
-
-void display(struct stack p)
-{
+}
+ void display(struct stack s,void *item)
+ {
     int i;
-    for(i=p.top;i>=0;i--)
-    {
-        printf("%d",*(int*)p.data[i]);
-    }
-}
+   for(i=s.top;i>=0;i--)
+   {
+        printf("%d",*(char*)s->data[i]);
 
+   }
 
-
-
+ }
 int main()
 {
+    int item ,error=0;
+    struct stack s={-1,100};
 
-    int item;
-    struct stack p={-1,100};
-    printf("Enter the item: ");
-    scanf("%d", &item);
-    push(&p, &item);
-    display(p);
-    return 0;
+    printf("Enter the element: ");
+    scanf("%d",&item);
+    push(&s,&item);
+    pop(&s,&error);
+    if(error)
+    {
+        printf("Stack Empty");
+    }
+    else{
+        display(s);
+    }
+
+
 }
+
+
+
+
+
