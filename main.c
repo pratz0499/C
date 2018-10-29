@@ -35,7 +35,7 @@ void *pop(struct stack *s, int *error)
 }
  void display(struct stack s,void *item)
  {
-    int i;
+    int i ;
    for(i=s.top;i>=0;i--)
    {
         printf("%d",*(char*)s->data[i]);
