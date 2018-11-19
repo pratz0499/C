@@ -29,7 +29,7 @@ void *pop(struct stack *s, int *error)
     }
     else
     {
-        s->data[s->top]=temp;
+        temp=s->data[s->top];
         s->top--;
         return temp;
     }
@@ -47,12 +47,12 @@ void *pop(struct stack *s, int *error)
  void display_float(struct stack f)
  {
      int  j;
-     for(j=f.top;j<=0;j--)
+     for(j=f.top;j>=0;j--)
      {
           printf("%f",*(float*)f.data[j]);
      }
  }
- void display_str(struct stack c)
+ void display_char(struct stack c)
  {
      int k;
      for(k=c.top;k>=0;k--)
@@ -63,54 +63,20 @@ void *pop(struct stack *s, int *error)
 
 void main()
 {
-    int error=0,item[100],n,h,x,choice;
+    int error=0,item[100]={1,2,3},n,h,x,choice;
+    float fitem:{4,3,2};
+    char citem:{'a','b','t'};
     struct stack s={-1,100};
     struct stack f={-1,100};
     struct stack c={-1,100};
-    printf("STACK MENU");
-    printf("\n1.Integer\n2.float\n3.character\n");
-    scanf("%d",&x);
-    while(choice!=4)
-    {
-	    printf("\n1.PUSH\n2.POP\n3.DISPLAY\n4.EXIT\n");
-	    printf("Enter the choice \n");
-	    scanf("%d",&choice);
-	   	 switch(choice)
- 	  	 {
-
-                    case 1:  printf("Enter the n time: ");
-                             scanf("%d",&n);
-                             for(h=0;h<n;h++);
-                              {
-		               printf("Enter the element: ");
-			       scanf("%d",&item[h]);
-			       int a = push(&s,&item[h]);
-    		                break;
-                              }
-		    case 2:  pop(&s,&error);
- 	        	     if(error)
-  	          	     {
- 	          	       printf("STACK EMPTY");
-  	                     }
-       		   	      break;
-
-		    case 3: display_int(s);
-                            break;
-
- 		            display_float(f);
-                            break;
-
-		            display_str(c);
-	        	    break;
-
-	 	    case 4: exit(0);
-        	            break;
-
-		    default : printf("INVALID OPTION OF CHOICE");
-		              break;
-
-    }
-  }
+    pushed(&s,item[0]);
+    pushed(&f,item[0]);
+    pushed(&c,item[0]);
+    
+    display_int(s);
+    display_float(f);
+    display_char(c);
+    
 }
 
 
