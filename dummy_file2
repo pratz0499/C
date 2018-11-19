@@ -39,7 +39,7 @@ void *pop(struct stack *s, int *error)
    int i;
    for(i=s.top;i>=0;i--)
    {
-        printf("%d",*(int *)s.data[i]);
+        printf("%d\n",*(int *)s.data[i]);
 
    }
 
@@ -49,7 +49,7 @@ void *pop(struct stack *s, int *error)
      int  j;
      for(j=f.top;j>=0;j--)
      {
-          printf("%f",*(float*)f.data[j]);
+          printf("%f\n",*(float*)f.data[j]);
      }
  }
  void display_char(struct stack c)
@@ -57,7 +57,7 @@ void *pop(struct stack *s, int *error)
      int k;
      for(k=c.top;k>=0;k--)
      {
-         printf("%c",*(char *)c.data[k]);
+         printf("%c\n",*(char *)c.data[k]);
      }
  }
 
@@ -69,10 +69,9 @@ void main()
     struct stack s={-1,100};
     struct stack f={-1,100};
     struct stack c={-1,100};
-    pushed(&s,item[0]);
-    pushed(&f,item[0]);
-    pushed(&c,item[0]);
-    
+    pushed(&s,&item[0]);
+    pushed(&f,&item[0]);
+    pushed(&C,&item[0]);
     display_int(s);
     display_float(f);
     display_char(c);
