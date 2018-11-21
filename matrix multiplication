@@ -1,0 +1,132 @@
+
+#include<stdio.h>
+void add(int a[100][100],int b[100][100], int c[100][100])
+{
+int i,j,k,s;
+   for(i=0;i<m;i++)
+    {
+     for(j=0;j<p;j++)
+     {
+	c[i][j]=0;
+	for(k=0;k<n;k++)
+	{
+	  for(s=0;s<q;s++)
+	  {
+	    c[i][j]=(a[i][k]+b[i][s]);
+	  }
+	}
+    }
+
+   for(i=0;i<m;i++)
+   {
+     for(j=0;j<n;j++)
+      {
+        printf("/n");
+  	printf("c[%d][%d]",i,j);
+      }
+   }
+}
+
+void sub(int a[100][100], int b[100][100], int c[100][100]);
+{
+int i,j;
+  for(i=0;i<m;i++)
+  {
+    for(j=0;j<p;j++)
+     {
+	c[i][j]=0;
+	for(k=0;k<n;k++)
+  	{
+	 c[i][j]=a[i][j]-b[i][j];
+	}
+     }
+ }
+    for(i=0;i<m;i++)
+    {
+      for(j=0;j<n;j++)
+      {
+       printf("/n");
+       printf("c[%d][%d]",i,j);
+      }
+    }
+}
+
+void mul(int a[100][100], int b[100][100], int c[100][100])
+{
+int i,j;
+     if(n!=q)
+     {
+       printf("MATRIX MULTIPLICATION NOT POSSIBLE");
+     }
+else
+{
+  for(i=0;i<m;i++)
+  {
+   for(j=0;j<q;j++)
+   {
+    c[i][j]=0;
+    for(k=0;k<n;k++)
+    {
+     c[i][j]=c[i][j]+a[i][k]*b[k][j];
+    }
+   }
+  }
+    for(i=0;i<m;i++)
+    {
+     for(j=0;j<n;j++)
+      {
+       printf("/n");
+       printf("c[%d][%d]",i,j);
+      }
+    }
+ }
+}
+
+int main()
+{
+  int a[100][100], b[100][100],c[100][100],i,j,m,n,p,q,k,s;
+  int  choice;
+
+  printf("ENTER THE SIZE OF MATRIX A: ");
+  scanf("%d""%d",&m,&n);
+
+  printf("ENTER THE SIZE OF MATRIX B: ");
+  scanf("%d""%d",&p,&q);
+
+  printf("ENTER THE ELEMENTS OF MATRIX A:");
+  for(i=0;i<m;i++)
+  {
+   for(j=0;j<n;j++)
+    {
+     scanf("%d",&a[i][j]);
+    }
+  }
+  printf("ENTER THE ELEMENTS OF MATRIX B: ");
+  for(i=0;i<p;i++)
+  {
+   for(j=0;j<q;j++)
+    {
+     scanf("%d",b[i][j]);
+    }
+  }
+
+
+printf("MATRIX MENU OPERATIONS");
+printf("1.ADDITION/n 2.SUBTRACTION/n 3.MULTIPLICATION/n");
+
+printf("ENTER THE CHOICE: ");
+scanf("%d",&choice);
+
+switch(choice)
+{
+	 case 1: add(a[100][100],b[100][100],c[100][100]);
+       		 break;
+
+	case 2: sub(a[100][100],b[100][100],c[100][100]);
+                break;
+
+  	case 3: mul( a[100][100],b[100][100],c[100][100]);
+       		break;
+	}
+	return 0;
+}
