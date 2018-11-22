@@ -1,57 +1,41 @@
-
 #include<stdio.h>
-void add(int a[100][100],int b[100][100], int c[100][100])
+void display(int m, int n,int c[m][n])
 {
 int i,j,k,s;
    for(i=0;i<m;i++)
     {
-     for(j=0;j<p;j++)
-     {
-	c[i][j]=0;
-	for(k=0;k<n;k++)
-	{
-	  for(s=0;s<q;s++)
-	  {
-	    c[i][j]=(a[i][k]+b[i][s]);
-	  }
-	}
-    }
-
-   for(i=0;i<m;i++)
-   {
      for(j=0;j<n;j++)
-      {
-        printf("/n");
-  	printf("c[%d][%d]",i,j);
-      }
-   }
+     {
+	printf("%d ",c[i][j]);
+    }
+    printf("\n");
 }
 
-void sub(int a[100][100], int b[100][100], int c[100][100]);
+void add(int m, int n,int a[m][n],int b[m][n], int c[m][n])
+{
+int i,j,k,s;
+   for(i=0;i<m;i++)
+    {
+     for(j=0;j<n;j++)
+     {
+	c[i][j]=a[i][j]+b[i][j];
+     }
+   }
+}
+void sub(int m,int n,int a[m][n], int b[m][n], int c[m][n]);
 {
 int i,j;
   for(i=0;i<m;i++)
   {
-    for(j=0;j<p;j++)
-     {
-	c[i][j]=0;
-	for(k=0;k<n;k++)
-  	{
-	 c[i][j]=a[i][j]-b[i][j];
-	}
-     }
- }
-    for(i=0;i<m;i++)
-    {
-      for(j=0;j<n;j++)
+    for(j=0;j<n;j++)
       {
-       printf("/n");
-       printf("c[%d][%d]",i,j);
+	c[i][j]=a[i][j]-b[i][j];
       }
-    }
+  }
+
 }
 
-void mul(int a[100][100], int b[100][100], int c[100][100])
+void mul(int m,int n,int p,int q, int a[m][n], int b[p][q],int c[n][p])
 {
 int i,j;
      if(n!=q)
@@ -71,15 +55,6 @@ else
     }
    }
   }
-    for(i=0;i<m;i++)
-    {
-     for(j=0;j<n;j++)
-      {
-       printf("/n");
-       printf("c[%d][%d]",i,j);
-      }
-    }
- }
 }
 
 int main()
@@ -117,15 +92,20 @@ printf("1.ADDITION/n 2.SUBTRACTION/n 3.MULTIPLICATION/n");
 printf("ENTER THE CHOICE: ");
 scanf("%d",&choice);
 
+int a[100][100];
+f(a[100][100]);
+
+
 switch(choice)
 {
-	 case 1: add(a[100][100],b[100][100],c[100][100]);
+	 case 1: add(m,n,a,b,c);
+		 display(m,n,c);
        		 break;
 
-	case 2: sub(a[100][100],b[100][100],c[100][100]);
+	case 2: sub(m,n,a,b,c);
                 break;
 
-  	case 3: mul( a[100][100],b[100][100],c[100][100]);
+  	case 3: mul(m,n,p,q, a,b,c);
        		break;
 	}
 	return 0;
