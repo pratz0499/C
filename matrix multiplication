@@ -1,112 +1,117 @@
 #include<stdio.h>
-void display(int m, int n,int c[m][n])
+void display(int m, int n,int c[100][100])
 {
-int i,j,k,s;
-   for(i=0;i<m;i++)
-    {
-     for(j=0;j<n;j++)
-     {
-	printf("%d ",c[i][j]);
-    }
-    printf("\n");
+	int i,j,k,s;
+	for(i=0;i<m;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			printf("%d ",c[i][j]);
+		}
+		printf("\n");
+	}
+}
+void add(int m, int n,int a[100][100],int b[100][100], int c[100][100])
+{
+	int i,j,s;
+	for(i=0;i<m;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			c[i][j]=a[i][j]+b[i][j];
+		}
+	}
+}
+void sub(int m,int n,int a[100][100], int b[100][100], int c[100][100])
+{
+	int i,j;
+	for(i=0;i<m;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			c[i][j]=a[i][j]-b[i][j];
+		}
+	}
 }
 
-void add(int m, int n,int a[m][n],int b[m][n], int c[m][n])
+void mul(int m,int n,int p,int q, int a[100][100], int b[100][100],int c[100][100])
 {
-int i,j,k,s;
-   for(i=0;i<m;i++)
-    {
-     for(j=0;j<n;j++)
-     {
-	c[i][j]=a[i][j]+b[i][j];
-     }
-   }
+	int i,j, k;
+	if(n!=p)
+	{
+		printf("MATRIX MULTIPLICATION NOT POSSIBLE");
+	}
+	else
+	{
+		for(i=0;i<m;i++)
+		{
+			for(j=0;j<q;j++)
+			{
+				c[i][j]=0;
+				for(k=0;k<n;k++)
+				{
+					c[i][j]=c[i][j]+a[i][k]*b[k][j];
+				}
+			}
+		}
+	}
 }
-void sub(int m,int n,int a[m][n], int b[m][n], int c[m][n]);
-{
-int i,j;
-  for(i=0;i<m;i++)
-  {
-    for(j=0;j<n;j++)
-      {
-	c[i][j]=a[i][j]-b[i][j];
-      }
-  }
-
-}
-
-void mul(int m,int n,int p,int q, int a[m][n], int b[p][q],int c[n][p])
-{
-int i,j;
-     if(n!=q)
-     {
-       printf("MATRIX MULTIPLICATION NOT POSSIBLE");
-     }
-else
-{
-  for(i=0;i<m;i++)
-  {
-   for(j=0;j<q;j++)
-   {
-    c[i][j]=0;
-    for(k=0;k<n;k++)
-    {
-     c[i][j]=c[i][j]+a[i][k]*b[k][j];
-    }
-   }
-  }
-}
-
 int main()
 {
-  int a[100][100], b[100][100],c[100][100],i,j,m,n,p,q,k,s;
-  int  choice;
+	int a[100][100], b[100][100], c[100][100],i,j,m,n,p,q,k,s;
+	int  choice;
 
-  printf("ENTER THE SIZE OF MATRIX A: ");
-  scanf("%d""%d",&m,&n);
+	printf("ENTER THE SIZE OF MATRIX A: ");
+	scanf("%d""%d",&m,&n);
 
-  printf("ENTER THE SIZE OF MATRIX B: ");
-  scanf("%d""%d",&p,&q);
+	printf("ENTER THE SIZE OF MATRIX B: ");
+	scanf("%d""%d",&p,&q);
 
-  printf("ENTER THE ELEMENTS OF MATRIX A:");
-  for(i=0;i<m;i++)
-  {
-   for(j=0;j<n;j++)
-    {
-     scanf("%d",&a[i][j]);
-    }
-  }
-  printf("ENTER THE ELEMENTS OF MATRIX B: ");
-  for(i=0;i<p;i++)
-  {
-   for(j=0;j<q;j++)
-    {
-     scanf("%d",b[i][j]);
-    }
-  }
-
-
-printf("MATRIX MENU OPERATIONS");
-printf("1.ADDITION/n 2.SUBTRACTION/n 3.MULTIPLICATION/n");
-
-printf("ENTER THE CHOICE: ");
-scanf("%d",&choice);
-
-int a[100][100];
-f(a[100][100]);
-
-
-switch(choice)
-{
-	 case 1: add(m,n,a,b,c);
-		 display(m,n,c);
-       		 break;
-
-	case 2: sub(m,n,a,b,c);
-                break;
-
-  	case 3: mul(m,n,p,q, a,b,c);
-       		break;
+	printf("ENTER THE ELEMENTS OF MATRIX A:");
+	for(i=0;i<m;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			scanf("%d",&a[i][j]);
+		}
 	}
+	printf("ENTER THE ELEMENTS OF MATRIX B: ");
+	for(i=0;i<p;i++)
+	{
+		for(j=0;j<q;j++)
+		{
+			scanf("%d",&b[i][j]);
+		}
+	}
+
+	printf("MATRIX MENU OPERATIONS");
+	printf("1.ADDITION\n 2.SUBTRACTION\n 3.MULTIPLICATION\n");
+
+	
+
+	while(choice!=4)
+{
+	printf("ENTER THE CHOICE: ");
+	scanf("%d",&choice);
+	switch(choice)
+	{
+		case 1: add(m,n,a,b,c);
+			display(m,n,c);
+			break;
+
+		case 2: sub(m,n,a,b,c);
+			display(m,n,c);
+			break;
+
+		case 3: mul(m,n,p,q, a,b,c);
+			display(m,n,c);
+			break;
+		case 4:
+			break;
+		default:
+			printf("Wrong i/p selected\n");
+			break;
+	}
+}
 	return 0;
 }
