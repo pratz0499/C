@@ -1,3 +1,3 @@
-# structures
+# c and c++
 
-This is a repository made by me while learning structures in c
+contains all c and c++ files
