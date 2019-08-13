@@ -1,25 +1,41 @@
 #include<iostream>
 using namespace std;
 
-int take_input()
+class garray
 {
-	int n;
-	void *ptr;
-	cout<<"Enter the size of the array: ";
-	cin>>n;
+    public:
+        int n;
+	    char *ptr;
+    void take_input()
+    {
+	    cout<<"Enter the size of the array: ";
+	    cin>>n;
 
-	void **arr=malloc(sizeof(void*)* n);
-	for(int i =0;i<n;i++)
-	{
-		arr[i]=ptr;
-	}
-
-	cout<<"Enter the elements: ";
-	for(int j=0;j<n;j++)
-	{
-		cin>>arr[j];
-	}
-
+	    ptr=new (nothrow) char[n];
+	    if (ptr == nullptr)
+        cout << "Error: memory could not be allocated";
+	    else
+	    {
+		    cout<<"Enter the elements: ";
+		    for(int i=0;i<n;i++)
+		    {
+			    cin>>ptr[i];
+		    }
+	    }
+    }
+    void display()
+    {
+        for(int j=0;j<n;j++)
+        {
+            cout<<ptr[j]<<",";
+        }
+    }
+};
+int main()
+{
+    garray obj;
+    
+    obj.take_input();
+    obj.display();
+    return 0;
 }
-
-char display()
