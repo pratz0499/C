@@ -1,17 +1,18 @@
 #include<iostream>
+#include<string>
 using namespace std;
 
 class garray
 {
     public:
         int n;
-	    char *ptr;
+	    string *ptr;
     void take_input()
     {
 	    cout<<"Enter the size of the array: ";
 	    cin>>n;
 
-	    ptr=new (nothrow) char[n];
+	    ptr=new (nothrow) string[n];
 	    if (ptr == nullptr)
         cout << "Error: memory could not be allocated";
 	    else
