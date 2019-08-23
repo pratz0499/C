@@ -4,32 +4,30 @@ using namespace std;
 class check
 {
     public:
-        int n;
-    void check_number()
+        int a,b,c;
+    int Addition()
     {
-        if (n<0)
-        {
-            cout<<"The number is Negative";
-        }
-        else if (n==0)
-        {
-            cout<<"The number is Zero";
-        }
-        else
-        {
-            cout<<"The number is Positive";
-        }
+        c=a+b;
+        cout<<"The sum is: "<<c;
+       
     }
-    void even_odd()
+    int Subtraction()
     {
-        if(n%2==0)
-        {
-            cout<<"The Number is Even";
-        }
-        else
-        {
-            cout<<"The Number is odd";
-        }
+        c=a-b;
+        cout<<"The difference is: "<<c;
+     
+    }
+    int Multiplication()
+    {
+        c=a*b;
+        cout<<"The product is: "<<c;
+      
+    }
+    float Division()
+    {
+        c=a/b;
+        cout<<"The division is: "<<c;
+       
     }
 };
 
@@ -43,11 +41,37 @@ class check
 int main()
 {
     check obj;
-    cout<<"Enter the Number:";
-    cin>>obj.n;
-
-    obj.check_number();
-    obj.even_odd();
+    int choice=0;
+      
+    cout<<"Enter the First Number:";
+    cin>>obj.a;
+    
+    cout<<"Enter the Second Number:";
+    cin>>obj.b;
+    
+    
+  
+    while(choice!=5)
+    {
+        cout<<"\n1.Addition\n2.Subtraction\n3.Multiplication\n4.Division\n5.Exit\n";
+        cout<<"Enter the Choice:";
+        cin>>choice;
+        
+        switch(choice)
+        {
+            case 1:obj.Addition();
+                   break;
+            case 2:obj.Subtraction();
+                   break;
+            case 3:obj.Multiplication();
+                   break;
+            case 4:obj.Division();
+                   break;
+        }
+    
+    };
+    
     
     return 0;
 };
+
